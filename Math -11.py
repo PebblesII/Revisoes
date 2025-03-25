@@ -39,8 +39,8 @@ str(sortedlist)
 print(sortedlist)
 
 #  6. Faça um programa que, dadas duas listas de mesmo tamanho, crie uma nova lista com cada elemento igual à soma dos elementos da lista 1 com os da lista 2, na mesma posição
-n1 = [1, 2]
-n2 = [1, 2]
+n1 = [1, 2, 3, 4]
+n2 = [1, 2, 3, 4]
 
 for i, num in enumerate(n1):
     ans = n1[i] + n2[i]
