@@ -24,6 +24,7 @@
 # 20	                R$ 193.800,0
 import random
 
+pagar = 0
 Nums = []
 def megasena(quantidade):
     if quantidade > 5 and quantidade < 21:
@@ -69,7 +70,7 @@ while True:
     if user != 0:
      megasena(user)
      print(Nums)
-     pagar = preços[str(user)]
+     pagar += int(preços[str(user)])
      print(f"A Pagar: {pagar}R$")
     else:
         break
