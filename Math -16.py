@@ -32,7 +32,7 @@ for i in lista:
 
 dif = conjunto.difference(conjunto2)
 print(dif)
-
+#a
 
 interseao = conjunto.intersection(conjunto2)
 print(interseao)
