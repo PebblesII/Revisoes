@@ -27,12 +27,14 @@ print(lista)
 print(tupla)
 print(conjunto)
 
+conjunto2.add("abigail")
+
 for i in lista:
     print(i)
 
 dif = conjunto.difference(conjunto2)
 print(dif)
-#a
+
 
 interseao = conjunto.intersection(conjunto2)
 print(interseao)
