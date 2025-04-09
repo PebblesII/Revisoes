@@ -25,6 +25,8 @@ import os
 import time
 
 
+
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -33,44 +35,60 @@ clear()
 contantos = {
 
 }
-i = 0
-while True:
-
-    username = input("Contanto novo: ")
-    userage = input("Idade: ")
-    userphone = int(input("Número de telefone: "))
-    usermail = input("Email: ")
-    userrenda = int(input("Renda: "))
-    userstate = input("Estado: ")
-
-    contantos[username] = [f"Idade: {userage}", f"Telephone: {userphone}", f"Email: {usermail}" , f"Renda: {userrenda}", f"Estado: {userstate}" ]
-
-    stop = input("Sair?: [Y] or [N] ")
-    if stop == "Y":
-        break
-    else:
-        i+=1
-        print(f"Numero de contantos: {i}")
-        clear()
 
 
-print(contantos)
+def Adicionar():
+    i = 0
+    while True:
+
+        username = input("Contanto novo: ")
+        userage = input("Idade: ")
+        userphone = int(input("Número de telefone: "))
+        usermail = input("Email: ")
+        userrenda = int(input("Renda: "))
+        userstate = input("Estado: ")
+
+        contantos[username] = [f"Idade: {userage}", f"Telephone: {userphone}", f"Email: {usermail}" , f"Renda: {userrenda}", f"Estado: {userstate}" ]
+
+        stop = input("Sair?: [Y] or [N] ")
+        if stop == "Y":
+            break
+        else:
+            i+=1
+            print(f"Numero de contantos: {i}")
+            clear()
 
 
 def search(username):
     if username in contantos:
         return print(contantos[username])
     else:
-        print("Contanto inexsitente")
+        print("Contato inexsitente")
 
 
-procurar = input("Procurar?: [Y] or [N] ")
-while True:
-    if procurar == "Y":
-        Individuo = input("Procurar: ")
-        search(Individuo)
-        time.sleep(3)
-        procurar = input("Procurar?: [Y] or [N] ")
+def Corrigir(username):
+    if username in contantos:
+        qual = int(input("Corrigir oque?: idade [1], Telephone [2], Email [3], Renda [4], Estado [5] "))
+        nova = input("Nova informação: ")
+
+        contantos[username][qual - 1] = nova
     else:
-        break
+        print("Contato inexsitente")
 
+def deletar(username):
+    if username in contantos:
+        contantos.pop(username)
+    else:
+        print("Contato inexsitente")
+
+print(contantos)
+while True:
+    Escolha = input("Oque quer fazer Adicionar [1], Procurar [2], Corrigir [3], Deletar [4] ")
+    if Escolha == "1":
+        Adicionar()
+    elif Escolha == "2":
+        search(input("Procurar: "))
+    elif Escolha == "3":
+        Corrigir(input("Corrigir: "))
+    elif Escolha == "4":
+        deletar(input("Deletar: "))
