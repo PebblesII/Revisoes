@@ -24,7 +24,7 @@
 import os
 import time
 import numpy as np
-
+from numpy.ma.core import count
 
 
 def clear():
@@ -88,6 +88,17 @@ def media():
     soma = sum(numeros) / len(numeros)
     print(soma)
 
+def estado():
+    estados = []
+    for i in contantos:
+        estados.append(contantos[i][4])
+
+    repetidos = []
+    for i in estados:
+        if i not in repetidos:
+            print(f"{i}: {estados.count(i)}")
+            repetidos.append(i)
+
 print(contantos)
 while True:
     clear()
@@ -102,3 +113,5 @@ while True:
         deletar(input("Deletar: "))
     elif Escolha == "5":
         media()
+    elif Escolha == "6":
+        estado()
