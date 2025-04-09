@@ -23,7 +23,7 @@
 
 import os
 import time
-
+import numpy as np
 
 
 
@@ -48,7 +48,7 @@ def Adicionar():
         userrenda = int(input("Renda: "))
         userstate = input("Estado: ")
 
-        contantos[username] = [f"Idade: {userage}", f"Telephone: {userphone}", f"Email: {usermail}" , f"Renda: {userrenda}", f"Estado: {userstate}" ]
+        contantos[username] = [userage, userphone, usermail, userrenda, userstate]
 
         stop = input("Sair?: [Y] or [N] ")
         if stop == "Y":
@@ -81,9 +81,17 @@ def deletar(username):
     else:
         print("Contato inexsitente")
 
+def media():
+    numeros = []
+    for i in contantos:
+        numeros.append(int(contantos[i][0]))
+    soma = sum(numeros) / len(numeros)
+    print(soma)
+
 print(contantos)
 while True:
-    Escolha = input("Oque quer fazer Adicionar [1], Procurar [2], Corrigir [3], Deletar [4] ")
+    clear()
+    Escolha = input("Oque quer fazer Adicionar [1], Procurar [2], Corrigir [3], Deletar [4], Média [5], Estados [6] ")
     if Escolha == "1":
         Adicionar()
     elif Escolha == "2":
@@ -92,3 +100,5 @@ while True:
         Corrigir(input("Corrigir: "))
     elif Escolha == "4":
         deletar(input("Deletar: "))
+    elif Escolha == "5":
+        media()
