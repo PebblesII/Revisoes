@@ -15,3 +15,4 @@ while True:
                     else:
                         indice += 1
     print(lista)
+
