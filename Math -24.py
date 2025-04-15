@@ -42,7 +42,7 @@ def jogo_velha():
                             turn = "X"
                         break
                     if matriz[i][x] == "X" or matriz[user][x] == "0":
-                        print("Ja preenchida")
+                        print(" Ja preenchida")
 
 
 
