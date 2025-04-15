@@ -13,3 +13,4 @@ for n in range(r(1, 100)):
 
 print(sorted(valores[0]))
 print(sorted(valores[1]))
+
