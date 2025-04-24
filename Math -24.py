@@ -1,49 +1,63 @@
 # EXERCÍCIO MATRIZ 3x3 (Tipo Jogo da Velha)
 
 # Crie uma matriz 3x3 com cada elemento prenchido com valores sequenciais de 1 a 9
-matriz = [[1, 2, 3],
-          [4, 5, 6],
-          [7, 8, 9]]
+matriz = [[1,2,3],
+          [4,5,6],
+          [7,8,9]]
+marcador = "X"
+
+while True:
+  # Imprima cada linha da matriz em um linha diferente.
+  print()
+  for linha in matriz:
+    for valor in linha:
+      print(f"[{valor:^3}]", end="")
+    print()
 
 
-# Imprima cada linha da matriz em um linha diferente.
-# for i in matriz:
-#     print(i)
-# Solicite ao usário escolher uma das nove posições digitando o número correspondente
+  # Solicite ao usário escolher uma das nove posições digitando o número correspondente
+  escolha = input("Digite um número da matriz disponível: ")
 
-# Verifique se o usuário digitou mesmo um número válido e dentro do intervalo de 1 a 9
+  # Verifique se o usuário digitou mesmo um número válido e dentro do intervalo de 1 a 9
+  if escolha.isnumeric():
+    escolha = int(escolha)
+    if 1 <= escolha <= 9:
+  # Substitua o valor escolhido por X (letra X maiúscula) ou por O (letra O maiúscula) alternadamente começando por X
+      feito = False
+      for linha in range(3):
+        for coluna in range(3):
+          if matriz[linha][coluna] == escolha:
+            matriz[linha][coluna] = marcador
+            feito = True
+            if marcador == "X":
+              marcador = "O"
+            else:
+              marcador = "X"
+            break
+        if feito:
+          break
 
-# Substitua o valor escolhido por X (letra X maiúscula) ou por O (letra O maiúscula) alternadamente começando por X
+  # Se a casa escolhida pelo usuário já tiver sido preenchida antes por X ou O, imprima uma mensagem informando e solicite novamente outra opção válida.
+      if feito == False:
+        print("\nEsta casa já fo escolhida. Escolha outra opção válida.")
 
-# Se a casa escolhida pelo usuário já tiver sido preenchida antes por X ou O, imprima uma mensagem informando e solicite novamente outra opção válida.
+# Quando todas as 9 casas da matriz já tiver sido preenchidas, avise o usuário e termine o programa.
+  continuar = False
+  for linha in matriz:
+    for valor in linha:
+      if valor in list(range(1,10)):
+        continuar = True
+        break
+    if continuar:
+      break
 
-# Quando todas as 9 casas da matriz tiver sido preenchidas, avise o usuário e termine o programa.
+  if continuar == False:
+    print()
+    for linha in matriz:
+      for valor in linha:
+        print(f"[{valor:^3}]", end="")
+      print()
 
-def jogo_velha():
-    matriz = [[1, 2, 3],
-              [4, 5, 6],
-              [7, 8, 9]]
-
-    turn = "X"
-    while True:
-        for i in range(3):
-            print(matriz[i])
-
-        print(f"Turno : {turn}")
-        user = int(input("Escolha de 1 a 9: "))
-        if user.is_integer():
-            for i in range(3):
-                for x in range(3):
-                    if user == matriz[i][x]:
-                        matriz[i][x] = turn
-                        if turn == "X":
-                            turn = "0"
-                        elif turn == "0":
-                            turn = "X"
-                        break
-                    if matriz[i][x] == "X" or matriz[user][x] == "0":
-                        print(" Ja preenchida")
-
-
-
-jogo_velha()
+    print("Todas as casas já foram preenchidas!")
+    print("Fim do programa!\n")
+    break
