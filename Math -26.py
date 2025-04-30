@@ -40,6 +40,7 @@ def addic():
         msg.showwarning("Aviso", f"Faltando: {n} {c} {g}")
 
 def findic():
+    #Entrys
     nome = entry_nome.get().lower().strip()
     cel = entry_celular.get().strip()
     gmail = entry_gmail.get().lower().strip()
@@ -47,6 +48,8 @@ def findic():
 
 
     lista.select_clear(0, tk.END)
+
+    #Fiding
     if nome or cel or gmail:
         for i in range(0, lista.size()):
             if nome in lista.get(i).lower().strip():
@@ -59,6 +62,7 @@ def findic():
                 indice = i
                 break
 
+    #Warnings
     elif not nome and cel and gmail:
         msg.showwarning("Error", "Missing Info")
 
@@ -67,6 +71,7 @@ def findic():
 
     print(indice)
 
+    #Selection
     if lista.size() > 0 and indice is not None:
         lista.selection_set(indice)
         lista.activate(indice)
